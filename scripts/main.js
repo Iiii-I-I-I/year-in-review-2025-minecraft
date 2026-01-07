@@ -23,6 +23,7 @@
                 y: {
                     drawAxis: true,
                     includeZero: true,
+                    pixelsPerLabel: 40,
                     axisLineColor: 'transparent',
                     axisLabelWidth: 0,
                 }
@@ -202,7 +203,7 @@
         const traffic = new Dygraph(
             get('.traffic .graph'),
             './data/traffic.csv',
-            trafficGraphConfig('.traffic', 2000000, trafficAnnotations, 'hsl(109, 42%, 59%)')
+            trafficGraphConfig('.traffic', 1600000, trafficAnnotations, 'hsl(109, 42%, 59%)')
         );
 
         // =================
@@ -210,12 +211,8 @@
         // =================
 
         const editsAnnotations = createAnnotations('Edits', [
-            { x: "2021/01/04", text: "RuneScape's 20th anniversary events begin" },
-            { x: "2021/02/22", text: "RuneScape: Azzanadra's Quest is released" },
-            { x: "2021/07/26", text: "RuneScape: Nodon Front is released" },
-            { x: "2021/08/18", text: "Is this annotation too high?", tickHeight: 180 },
-            { x: "2021/10/25", text: "RuneScape: TzekHaar Front is released" },
-            { x: "2021/11/25", text: "Old School: Android client beta testing begins" },
+            { x: "2025/02/04", text: "Example annotation" },
+            { x: "2025/05/22", text: "Example annotation" },
         ]);
         const editsGraphConfig = (containerSelector, lineColor) => {
             return {
@@ -232,7 +229,7 @@
                     ...config.axes,
                     y: {
                         ...config.axes.y,
-                        valueRange: [0, 4600],
+                        valueRange: [0, 4100],
                         valueFormatter: createValueFormatter(config.locale)
                     }
                 }
@@ -246,131 +243,5 @@
         );
     }
 
-    function initBarCharts() {
-        function calculateRowTotal(warframe) {
-            return warframe.variants.reduce((sum, v) => sum + v.pageviews, 0);
-        }
-
-        function createBarLabel(text) {
-            const label = document.createElement('div');
-            label.className = 'bar-label';
-            label.textContent = text;
-
-            return label;
-        }
-
-        function createBarTotal(total) {
-            const barTotal = document.createElement('div');
-            barTotal.className = 'bar-total';
-            barTotal.textContent = total.toLocaleString();
-
-            return barTotal;
-        }
-
-        function createBarSegment(variant, maxTotal) {
-            const segment = document.createElement('div');
-            const percentage = (variant.pageviews / maxTotal) * 100;
-            const tooltip = createTooltip(variant);
-
-            segment.classList.add('bar-segment', 'tooltip-hidden');
-            segment.style.width = percentage + '%';
-            segment.appendChild(tooltip);
-
-            return segment;
-        }
-
-        function createBarContainer(variants, maxTotal) {
-            const barContainer = document.createElement('div');
-            barContainer.className = 'bar-container';
-
-            variants.forEach(variant => {
-                const segment = createBarSegment(variant, maxTotal);
-                barContainer.appendChild(segment);
-            });
-
-            attachTooltipEvents(barContainer);
-            return barContainer;
-        }
-
-        function createChartRow(warframe, maxTotal) {
-            const row = document.createElement('div');
-            row.className = 'chart-row';
-
-            if (warframe.isNew) {
-                row.classList.add('new');
-            }
-
-            const total = calculateRowTotal(warframe);
-
-            row.appendChild(createBarLabel(warframe.name));
-            row.appendChild(createBarContainer(warframe.variants, maxTotal));
-            row.appendChild(createBarTotal(total));
-
-            return row;
-        }
-
-        function createTooltip(variant) {
-            const tooltip = document.createElement('div');
-            const titleNode = document.createElement('div');
-            const textNode = document.createElement('div');
-
-            titleNode.classList.add('tooltip-title');
-            titleNode.textContent = variant.name;
-            textNode.classList.add('tooltip-text');
-            textNode.textContent = variant.pageviews.toLocaleString() + ' views';
-
-            tooltip.classList.add('tooltip');
-            tooltip.appendChild(titleNode);
-            tooltip.appendChild(textNode);
-
-            return tooltip;
-        }
-
-        function attachTooltipEvents(barContainer) {
-            // '.tooltip-hidden' is added/removed from the parent segment element, not the tooltip
-            barContainer.addEventListener('mouseover', (e) => {
-                let segment = e.target;
-
-                if (segment.classList.contains('bar-segment')) {
-                    segment.classList.remove('tooltip-hidden');
-                }
-            });
-
-            barContainer.addEventListener('mouseout', (e) => {
-                let segment = e.target;
-
-                if (segment.classList.contains('bar-segment')) {
-                    segment.classList.add('tooltip-hidden');
-                }
-            });
-        }
-
-        function renderStackedBarChart(data, container) {
-            const sortedData = [...data].sort((a, b) => calculateRowTotal(b) - calculateRowTotal(a));
-            const maxTotalPageviews = Math.max(...sortedData.map(wf => calculateRowTotal(wf)));
-
-            sortedData.forEach(warframe => {
-                const row = createChartRow(warframe, maxTotalPageviews);
-                container.appendChild(row);
-            });
-        }
-
-        function loadAndRenderChart(jsonUrl, container) {
-            fetch(jsonUrl)
-                .then(response => response.json())
-                .then(data => renderStackedBarChart(data, container))
-                .catch(error => {
-                    console.error('Error loading chart data: ', error);
-                    container.innerHTML = `<p>Error loading chart data: ${error}</p>`;
-                });
-        }
-
-        loadAndRenderChart(
-            './data/warframes.json',
-            get('.warframe-test .bar-chart-container')
-        );
-    }
-
     initGraphs();
-    // initBarCharts();
 }());
