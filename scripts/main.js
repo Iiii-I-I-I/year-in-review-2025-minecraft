@@ -12,7 +12,7 @@
     // uses dygraphs library <http://dygraphs.com/>
     function initGraphs() {
         const config = {
-            locale: 'en-GB',
+            locale: 'en-US',
             dateOptions: { day: 'numeric', month: 'long', year: 'numeric' },
             gridColor: 'hsl(210, 0%, 40%)',
             axes: {

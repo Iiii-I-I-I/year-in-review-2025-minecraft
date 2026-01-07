@@ -565,19 +565,19 @@ div[style*="bottom: 0px"] .dygraph-axis-label-y {
     opacity: 0.8;
 }
 
-.eclipse-of-the-heart::before {
+.live-march::before {
     background-image:
         var(--upper-gradient),
-        url('../images/bg/Eclipse-of-the-Heart.jpg');
-    background-position: 20%;
+        url('../images/bg/LIVE-March.jpg');
+    background-position: 0%;
     background-size: cover;
 }
 
-.catalyst-league::before {
+.live-september::before {
     background-image:
         var(--upper-gradient),
-        url('../images/bg/Stone-of-Jas.jpg');
-    background-position: center;
+        url('../images/bg/LIVE-September.jpg');
+    background-position: 25%;
     background-size: cover;
 }
 
