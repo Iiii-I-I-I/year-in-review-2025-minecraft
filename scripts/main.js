@@ -173,13 +173,9 @@
         // =================
 
         const trafficAnnotations = createAnnotations('Pageviews', [
-            { x: "2025/01/14", text: "Beneath Scabaras' Sands quest is released" },
-            { x: "2025/02/21", text: "Double XP event begins" },
-            { x: "2025/03/03", text: "110 Runecrafting is released", tickHeight: 45 },
-            { x: "2025/05/12", text: "Augmented Runecrafting and Thieving are released" },
-            { x: "2025/07/28", text: "Eclipse of the Heart quest is released" },
-            { x: "2025/09/15", text: "Catalyst League begins", tickHeight: 130 },
-            { x: "2025/11/24", text: "120 Thieving and Heists are released" },
+            { x: "2025/01/14", text: "Example annotation 1" },
+            { x: "2025/02/21", text: "Example annotation 2" },
+            { x: "2025/03/21", text: "Example annotation 3", tickHeight: 60 },
         ]);
         const trafficGraphConfig = (containerSelector, yAxisRange, annotations, lineColor) => {
             return {
@@ -206,7 +202,7 @@
         const traffic = new Dygraph(
             get('.traffic .graph'),
             './data/traffic.csv',
-            trafficGraphConfig('.traffic', 5000000, trafficAnnotations, 'hsl(109, 42%, 59%)')
+            trafficGraphConfig('.traffic', 2000000, trafficAnnotations, 'hsl(109, 42%, 59%)')
         );
 
         // =================
