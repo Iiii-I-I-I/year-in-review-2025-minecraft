@@ -174,9 +174,11 @@
         // =================
 
         const trafficAnnotations = createAnnotations('Pageviews', [
-            { x: "2025/01/14", text: "Example annotation 1" },
-            { x: "2025/02/21", text: "Example annotation 2" },
-            { x: "2025/03/21", text: "Example annotation 3", tickHeight: 60 },
+            { x: "2025/03/22", text: "Minecraft LIVE – March is held", tickHeight: 70 },
+            { x: "2025/03/25", text: "Spring to Life is released", tickHeight: 70 },
+            { x: "2025/06/17", text: "Chase the Skies is released" },
+            { x: "2025/09/27", text: "Minecraft LIVE – September is held", tickHeight: 50 },
+            { x: "2025/12/09", text: "Mounts of Mayhem is released" },
         ]);
         const trafficGraphConfig = (containerSelector, yAxisRange, annotations, lineColor) => {
             return {
@@ -211,8 +213,7 @@
         // =================
 
         const editsAnnotations = createAnnotations('Edits', [
-            { x: "2025/02/04", text: "Example annotation" },
-            { x: "2025/05/22", text: "Example annotation" },
+            //
         ]);
         const editsGraphConfig = (containerSelector, lineColor) => {
             return {

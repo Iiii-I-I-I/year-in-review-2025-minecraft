@@ -574,7 +574,7 @@ div[style*="bottom: 0px"] .dygraph-axis-label-y {
     background-image:
         var(--upper-gradient),
         url('../images/bg/LIVE-September.jpg');
-    background-position: 25%;
+    background-position: right;
     background-size: cover;
 }
 
