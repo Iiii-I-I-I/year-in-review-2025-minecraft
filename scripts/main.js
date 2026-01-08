@@ -174,10 +174,11 @@
         // =================
 
         const trafficAnnotations = createAnnotations('Pageviews', [
-            { x: "2025/03/22", text: "Minecraft LIVE – March is held", tickHeight: 70 },
-            { x: "2025/03/25", text: "Spring to Life is released", tickHeight: 70 },
+            { x: "2025/03/22", text: "Minecraft LIVE – March takes place", tickHeight: 70 },
+            { x: "2025/03/25", text: "Spring to Life is released", tickHeight: 65 },
+            { x: "2025/04/04", text: "A Minecraft Movie is released", tickHeight: 65 },
             { x: "2025/06/17", text: "Chase the Skies is released" },
-            { x: "2025/09/27", text: "Minecraft LIVE – September is held", tickHeight: 50 },
+            { x: "2025/09/27", text: "Minecraft LIVE – September takes place", tickHeight: 50 },
             { x: "2025/12/09", text: "Mounts of Mayhem is released" },
         ]);
         const trafficGraphConfig = (containerSelector, yAxisRange, annotations, lineColor) => {
