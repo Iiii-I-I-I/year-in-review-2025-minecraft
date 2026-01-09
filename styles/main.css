@@ -152,14 +152,34 @@ header {
     --header-size: 4.5rem;
 
     display: flex;
+    position: relative;
     height: 100vh;
     background: linear-gradient(var(--bg-01), var(--bg-02));
+}
+
+.happy-ghast {
+    --ghast-width: 250px;
+
+    position: absolute;
+    width: var(--ghast-width);
+    height: var(--ghast-width);
+    top: 45%;
+    left: calc(var(--ghast-width) * -1);
+    filter: brightness(.8);
+    animation: fly 8s linear 1s infinite;
+
+    background: url('../images/Happy-Ghast.png') no-repeat;
+    background-size: contain;
+    image-rendering: crisp-edges;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .title {
     margin: auto;
     text-align: center;
-    /* transform: skew(0, -5deg); */
+    text-shadow: var(--shadow-02);
+    z-index: 2;
 }
 
 .title > span {
@@ -201,6 +221,20 @@ header {
 @media screen and (max-width: 900px), screen and (max-height: 900px) {
     header {
         --header-size: 8vmin;
+    }
+
+    .happy-ghast {
+        --ghast-width: 30vmin;
+    }
+}
+
+@keyframes fly {
+    from {
+        transform: rotate(-5deg) translateX(calc(0vw - var(--ghast-width)));
+    }
+
+    to {
+        transform: rotate(-5deg) translateX(calc(100vw + var(--ghast-width)));
     }
 }
 
