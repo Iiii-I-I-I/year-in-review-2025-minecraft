@@ -1,4 +1,29 @@
 /* ------------
+       FONTS
+   ------------ */
+
+@font-face {
+    font-family: Monocraft;
+    src: url('../styles/Monocraft-Black.otf') format('opentype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Monocraft;
+    src: url('../styles/Monocraft-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Monocraft;
+    src: url('../styles/Monocraft-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* ------------
       BASICS
    ------------ */
 
@@ -21,6 +46,7 @@ html {
 
 body {
     --font-stack: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica', sans-serif;
+    --header-font-stack: 'Monocraft', system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Helvetica', sans-serif;
 
     --base-hue: 140deg;
 
@@ -68,6 +94,12 @@ body {
     background-color: var(--bg-01);
     margin: 0;
     transition: --base-hue 1.5s ease;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--header-font-stack);
 }
 
 h1 {
@@ -149,7 +181,7 @@ strong {
    -------------- */
 
 header {
-    --header-size: 4.5rem;
+    --header-size: 4rem;
 
     display: flex;
     position: relative;
@@ -176,6 +208,7 @@ header {
 }
 
 .title {
+    font-weight: 700;
     margin: auto;
     text-align: center;
     text-shadow: var(--shadow-02);
@@ -188,9 +221,9 @@ header {
 
 .title-top {
     color: var(--text-01);
-    font-size: calc(var(--header-size) * 1.22);
-    font-weight: 700;
+    font-size: calc(var(--header-size) * 0.95);
     letter-spacing: .01em;
+    text-transform: uppercase;
 }
 
 .title-center {
@@ -200,9 +233,8 @@ header {
     background-clip: text;
 
     font-size: calc(var(--header-size) * 3.5);
-    font-weight: 850;
     letter-spacing: -0.02em;
-    margin: -0.05em 0;
+    margin: -0.05em 0 .05em;
 }
 
 .title-bottom {
@@ -312,8 +344,9 @@ section .link {
 
 .stat-value {
     color: var(--text-theme);
+    font-family: var(--header-font-stack);
     font-size: 2.5em;
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1;
 }
 
